@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech</title>
+</head>
+<body>
+    <h1>Text-to-Speech Conversion</h1>
+    
+    <label for="text-input">Enter Text:</label>
+    <input id="text-input" type="text" value="Hello, how are you?" />
+    
+    <label for="language-select">Select Language:</label>
+    <select id="language-select">
+        <option value="en">English</option>
+        <option value="ml">Malayalam</option>
+        <option value="hi">Hindi</option>
+        <!-- Add more language options here -->
+    </select>
+    
+    <button id="convert-button">Convert to Speech</button>
+    
+    <audio id="audio-player" controls></audio>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#convert-button").click(function() {
+                var text = $("#text-input").val();
+                var language = $("#language-select").val();
+                var url = "https://translate.google.com/translate_tts?ie=UTF-8&q=" + encodeURIComponent(text) + "&tl=" + language + "&client=tw-ob";
+                
+                $("#audio-player").attr("src", url);
+            });
+        });
+    </script>
+</body>
+</html>
